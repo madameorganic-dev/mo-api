@@ -1,7 +1,7 @@
 {
-  "name": "apiv2",
-  "version": "0.0.1",
-  "description": "This is a next generation API project with node, typescript",
+  "name": "xapi",
+  "version": "1.0.0",
+  "description": "APIv22 for React/ express",
   "author": "sijan",
   "license": "MIT",
   "scripts": {
