@@ -1,7 +1,7 @@
-import { Document } from 'mongoose';
+import { Document } from "mongoose";
 
 export class CreateCatDto extends Document {
-  readonly name: string;
-  readonly age: number;
-  readonly breed: string;
+  public name: string;
+  public age: number;
+  public breed: string;
 }

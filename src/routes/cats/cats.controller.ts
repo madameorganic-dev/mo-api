@@ -1,39 +1,40 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Res } from '@nestjs/common';
-import { CreateCatDto } from './dto/cats.dto';
-import { Response } from 'express';
-import { CatsService } from './cats.service';
+import { Body, Controller, Get, HttpStatus, Param, Post, Res } from "@nestjs/common";
+import { CreateCatDto } from "./dto/cats.dto";
+import { Response } from "express"; // tslint:disable-line
+import { CatsService } from "./cats.service";
 
-@Controller('cats')
+@Controller("cats")
 export class CatsController {
   constructor(private readonly catsService: CatsService) {
   }
 
   @Post()
-  async create(@Body() createCatDto: CreateCatDto) {
+  public async create(@Body() createCatDto: CreateCatDto) { // tslint:disable-line
     const { name, age, breed } = createCatDto;
     const result = { name, age, breed };
     this.catsService.create(result);
   }
 
   @Get()
-  findAll(): CreateCatDto[] {
+  public findAll(): CreateCatDto[] {
+    // @ts-ignore
     return this.catsService.findAll();
   }
 
   @Get()
-  findByLibrary(@Res() res: Response): any {
+  public findByLibrary(@Res() res: Response): any {
     res.status(HttpStatus.OK).json({ // Dead simple way to send back data
-      error: false,
-    });
+                                     error: false
+                                   });
   }
 
-  @Get('test')
-  findWildCards(): string {
-    return 'This action returns all wildcards';
+  @Get("test")
+  public findWildCards(): string {
+    return "This action returns all wildcards";
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
+  @Get(":id")
+  public findOne(@Param("id") id: string): string {
     return `This action returns a #${id} cat`;
   }
 }

@@ -1,11 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get } from "@nestjs/common";
 
-@Controller('posts')
+@Controller("posts")
 export class PostsController {
   @Get()
-  getPosts(): object {
+  public getPosts(): object {
     return {
-      data: 'From Posts',
+      data: "From Posts"
     };
   }
 }
