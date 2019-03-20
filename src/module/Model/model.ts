@@ -1,4 +1,4 @@
-import { Model } from "mongoose";
+import { Model, Types } from "mongoose";
 
 export interface IBaseModelParamsInterface {
   options?: any;
@@ -35,6 +35,29 @@ export abstract class BaseModel {
   }
 
   /**
+   * Get Model information by Id
+   * @param id
+   * @return Model<any>
+   */
+  public async get(id: string): Promise<any> {
+    try {
+      let model;
+
+      if (Types.ObjectId.isValid(id)) {
+        model = await this.model.findById(id).exec();
+      }
+      if (model) {
+        return model;
+      }
+      throw new Error(
+        `ID: ${id} for model ${this.model.modelName} not found`
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
    * List Model in descending order of 'createdAt' timestamp.
    *
    * @returns {Promise<Model[]>}
@@ -51,5 +74,27 @@ export abstract class BaseModel {
       .skip(perPage * (page - 1))
       .limit(perPage)
       .exec();
+  }
+
+  /**
+   * Delete user
+   * @public
+   */
+  public async delete(id: string): Promise<void> {
+    try {
+      let model;
+
+      if (Types.ObjectId.isValid(id)) {
+        model = await this.model.findById(id).exec();
+      }
+      if (model) {
+        return model.remove();
+      }
+      throw new Error(
+        `ID: ${id} for model ${this.model.modelName} not found`
+      );
+    } catch (error) {
+      throw error;
+    }
   }
 }

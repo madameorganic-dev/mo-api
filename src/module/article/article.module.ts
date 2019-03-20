@@ -8,8 +8,7 @@ import { articleProvider } from "./article.providers";
   {
     controllers: [CustomController],
     imports: [DatabaseModule],
-    providers: [Service,
-      ...articleProvider]
+    providers: [Service, ...articleProvider]
   })
 export class ArticleModule {
 }

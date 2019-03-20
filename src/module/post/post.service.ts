@@ -22,20 +22,19 @@ export class PostsService extends BaseModel {
     super(postModel, CreatePostDto);
   }
 
-  public create(createPostDto: CreatePostDto): IPost {
-    const createdPost = new this.postModel(createPostDto); // Use this to make sure the type is correct, can remove this by default
-    return super.create(createdPost);
-  }
+  // public create(createPostDto: CreatePostDto): IPost {
+  //   const createdPost = new this.postModel(createPostDto); // Use this to make sure the type is correct, can remove this by default
+  //   return super.create(createdPost);
+  // }
 
   /**
    * List Model in descending order of 'createdAt' timestamp.
    *
    * @param {number} skip - Number of users to be skipped.
-   * @param {number} limit - Limit number of users to be returned.
    * @returns {Promise<Model[]>}
    */
-  public list({ userId }: TProps): any {
-    const options = omitBy({ userId }, isNil);
-    return super.list(options, { sortType: 1 }); // overwritten sort type to be Ascending
-  }
+  // public list({ userId }: TProps): any {
+  //   const options = omitBy({ userId }, isNil);
+  //   return super.list(options, { sortType: 1 }); // overwritten sort type to be Ascending
+  // }
 }

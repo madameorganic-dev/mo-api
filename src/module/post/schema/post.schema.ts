@@ -12,6 +12,7 @@ export const PostSchema = new mongoose.Schema(
       unique: true
     },
     userId: {
+      ref: "Article",
       required: true,
       type: mongoose.SchemaTypes.ObjectId
     }

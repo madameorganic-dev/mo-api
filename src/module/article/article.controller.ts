@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Query, Delete } from "@nestjs/common";
 import { ArticleDto } from "./dto/article.dto";
 import { Service } from "./article.service";
-import { IPost as Interface } from "./interface/article.interface";
+import { IArticle as Interface } from "./interface/article.interface";
 import { BaseController } from "../Model/controller";
 
 @Controller("article")
