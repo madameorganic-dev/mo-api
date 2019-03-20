@@ -8,7 +8,8 @@ export const PostSchema = new mongoose.Schema(
     },
     title: {
       required: true,
-      type: String
+      type: String,
+      unique: true
     },
     userId: {
       required: true,

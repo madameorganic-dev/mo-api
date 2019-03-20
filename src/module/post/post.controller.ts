@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, Param } from "@nestjs/common";
+import { Controller, Get, Post, Body, Param, Query } from "@nestjs/common";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { PostsService } from "./post.service";
-import { Post as PostInterface } from "./interface/post.interface";
+import { IPost as Interface } from "./interface/post.interface";
 
 @Controller("posts")
 export class PostsController {
@@ -14,7 +14,7 @@ export class PostsController {
   }
 
   @Get()
-  private async findAll(): Promise<PostInterface[]> {
-    return this.postsService.findAll();
+  private async list(@Query() query: Interface): Promise<Interface[]> {
+    return this.postsService.list(query);
   }
 }
