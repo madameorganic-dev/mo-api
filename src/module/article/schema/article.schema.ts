@@ -1,7 +1,11 @@
 import * as mongoose from "mongoose";
 
-export const PostSchema = new mongoose.Schema(
+export const ArticleSchema = new mongoose.Schema(
   {
+    articleNumber: {
+      require: true,
+      type: Number
+    },
     content: {
       required: false,
       type: String
@@ -12,7 +16,6 @@ export const PostSchema = new mongoose.Schema(
       unique: true
     },
     userId: {
-      ref: "Article",
       required: true,
       type: mongoose.SchemaTypes.ObjectId
     }

@@ -2,6 +2,7 @@ import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import * as helmet from "helmet";
 import * as rateLimit from "express-rate-limit";
+import { HttpExceptionFilter } from "./Middleware/errors.filter";
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule, {});
@@ -15,6 +16,8 @@ async function bootstrap(): Promise<void> {
         windowMs: 15 * 60 * 1000 // 15 minutes
       })
   );
+  app.useGlobalFilters(new HttpExceptionFilter());
+
   await app.listen(8887);
 }
 
