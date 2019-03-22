@@ -3,11 +3,12 @@ import { CreatePostDto } from "./dto/create-post.dto";
 import { PostsService } from "./post.service";
 import { IPost as Interface } from "./interface/post.interface";
 import { BaseController } from "../Model/controller";
-import { PostValidation } from "./Validation/post.validation";
-import { ApiUseTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { PostValidation, PostDeleteValidation } from "./Validation/post.validation";
+import { ApiBearerAuth, ApiUseTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
 
 @ApiUseTags("Posts")
 @Controller("posts")
+@ApiBearerAuth()
 export class PostsController extends BaseController {
   constructor(private readonly postsService: PostsService) {
     super(postsService);
@@ -23,8 +24,8 @@ export class PostsController extends BaseController {
       status: 201
     })
   @ApiResponse({ status: 403, description: "Forbidden." })
-  public create(@Body() createPostDto: CreatePostDto): any {
-    return super.create(createPostDto);
+  public async create(@Body() createPostDto: CreatePostDto): Promise<Interface> {
+    return await super.create(createPostDto);
   }
 
   // tslint:disable-next-line
@@ -36,8 +37,9 @@ export class PostsController extends BaseController {
 
   // tslint:disable-next-line
   @Delete(":id")
+  @UsePipes(new PostDeleteValidation())
   @ApiOperation({ title: "Delete Posts" })
   public delete(@Param() params: Interface): any {
-    return super.delete(params.id);
+    return super.delete(params);
   }
 }

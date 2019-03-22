@@ -18,7 +18,7 @@ export abstract class BaseController {
   }
 
   @Delete(":id")
-  public delete(@Param() params: any): any {
+  public async delete(@Param() params: any): Promise<any[]> {
     return this.controller.delete(params.id);
   }
 }

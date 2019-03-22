@@ -14,3 +14,15 @@ export class PostValidation extends JoiValidationPipe {
 
   }
 }
+
+export class PostDeleteValidation extends JoiValidationPipe {
+
+  public buildSchema(): object {
+
+    return Joi.object(
+      {
+        id: Joi.string().required()
+      });
+
+  }
+}

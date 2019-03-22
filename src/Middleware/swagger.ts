@@ -10,7 +10,7 @@ export function createSwagger(app: INestApplication): void {
     .setTitle(SWAGGER_TITLE)
     .setDescription(SWAGGER_DESCRIPTION)
     .setVersion(version)
-    .setSchemes("https", "http")
+    .setSchemes("http")
     .addBearerAuth("Bearer", "header")
     .build();
 
