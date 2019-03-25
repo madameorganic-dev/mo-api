@@ -3,7 +3,9 @@ import { ArticleDto } from "./dto/article.dto";
 import { Service } from "./article.service";
 import { IArticle as Interface } from "./interface/article.interface";
 import { BaseController } from "../Model/controller";
+import { ApiUseTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
 
+@ApiUseTags("Article")
 @Controller("article")
 export class CustomController extends BaseController {
   constructor(private readonly postsService: Service) {
@@ -12,6 +14,13 @@ export class CustomController extends BaseController {
 
   // tslint:disable-next-line
   @Post()
+  @ApiOperation({ title: "Create Article" })
+  @ApiResponse(
+    {
+      description: "The record has been successfully created.",
+      status: 201
+    })
+  @ApiResponse({ status: 403, description: "Forbidden." })
   public create(@Body() values: ArticleDto): any {
     return super.create(values);
   }

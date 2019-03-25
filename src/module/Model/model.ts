@@ -1,4 +1,5 @@
 import { Model, Types } from "mongoose";
+import { LoggerService } from "../../Middleware/Logger";
 
 export interface IBaseModelParamsInterface {
   options?: any;
@@ -18,10 +19,12 @@ export interface IBaseModelCtxInterface {
 export abstract class BaseModel {
   private readonly model: Model<any>;
   private readonly type: any;
+  private readonly logger: LoggerService;
 
   protected constructor(data: any, type: any) {
     this.model = data;
     this.type = type;
+    this.logger = new LoggerService();
   }
 
   /**
@@ -29,9 +32,16 @@ export abstract class BaseModel {
    * @param values
    */
 
-  public create(values: any): any {
-    const object = new this.model(values);
-    return object.save();
+  public async create(values: any): Promise<any> {
+    try {
+      const object = new this.model(values);
+      const data = await object.save();
+      console.log("parent", data);
+      return data;
+    } catch (error) {
+      this.logger.error(`${this.model.modelName}.create Failed. Error Details :  ${error}`);
+      throw error;
+    }
   }
 
   /**
@@ -68,12 +78,18 @@ export abstract class BaseModel {
     params: IBaseModelParamsInterface = {},
     ctx: IBaseModelCtxInterface = { sortBy: "createdAt", sortType: -1, perPage: 30, page: 1 }
   ): any {
-    const { perPage, page, sortBy, sortType } = ctx;
-    return this.model.find(params)
-      .sort({ [sortBy]: sortType })
-      .skip(perPage * (page - 1))
-      .limit(perPage)
-      .exec();
+    try {
+      this.logger.info(`${this.model.modelName}.list params=${params} ctx=${ctx}`);
+      const { perPage, page, sortBy, sortType } = ctx;
+      return this.model.find(params)
+        .sort({ [sortBy]: sortType })
+        .skip(perPage * (page - 1))
+        .limit(perPage)
+        .exec();
+    } catch (error) {
+      this.logger.error(`${this.model.modelName}.list Failed. Error Details :  ${error}`);
+      throw error;
+    }
   }
 
   /**
@@ -82,6 +98,7 @@ export abstract class BaseModel {
    */
   public async delete(id: string): Promise<void> {
     try {
+      this.logger.info(`${this.model.modelName}.delete id=${id}`);
       let model;
 
       if (Types.ObjectId.isValid(id)) {
@@ -94,6 +111,7 @@ export abstract class BaseModel {
         `ID: ${id} for model ${this.model.modelName} not found`
       );
     } catch (error) {
+      this.logger.error(`${this.model.modelName}.delete id=${id} Failed. Error Details :  ${error}`);
       throw error;
     }
   }

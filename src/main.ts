@@ -2,11 +2,17 @@ import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import * as helmet from "helmet";
 import * as rateLimit from "express-rate-limit";
-import { HttpExceptionFilter } from "./Middleware/errors.filter";
+import { AllExceptionsFilter } from "./Middleware/errors.filter";
+import * as compression from "compression";
+import { createSwagger } from "./Middleware/swagger";
 
 async function bootstrap(): Promise<void> {
-  const app = await NestFactory.create(AppModule, {});
+  const app = await NestFactory.create(
+    AppModule
+  );
   // Middleware
+
+  app.use(compression());
   app.use(helmet());
   app.enableCors();
   app.use(
@@ -16,9 +22,11 @@ async function bootstrap(): Promise<void> {
         windowMs: 15 * 60 * 1000 // 15 minutes
       })
   );
-  app.useGlobalFilters(new HttpExceptionFilter());
+
+  createSwagger(app);
+  app.useGlobalFilters(new AllExceptionsFilter());
 
   await app.listen(8887);
 }
 
-bootstrap();
+bootstrap().catch((err) => console.error(err));
