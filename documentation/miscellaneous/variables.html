@@ -75,19 +75,31 @@
                             <a href="#DB_PROVIDER" title="src/constants.ts"><b>DB_PROVIDER</b>&nbsp;&nbsp;&nbsp;(src/.../constants.ts)</a>
                         </li>
                         <li>
+                            <a href="#PAYLOAD_COMPONENTS" title="src/security/security-utils.ts"><b>PAYLOAD_COMPONENTS</b>&nbsp;&nbsp;&nbsp;(src/.../security-utils.ts)</a>
+                        </li>
+                        <li>
                             <a href="#POST_MODEL_PROVIDER" title="src/constants.ts"><b>POST_MODEL_PROVIDER</b>&nbsp;&nbsp;&nbsp;(src/.../constants.ts)</a>
                         </li>
                         <li>
-                            <a href="#PostSchema" title="src/module/post/schema/product.schema.ts"><b>ProductSchema</b>&nbsp;&nbsp;&nbsp;(src/.../product.schema.ts)</a>
+                            <a href="#PostSchema" title="src/module/post/schema/post.schema.ts"><b>PostSchema</b>&nbsp;&nbsp;&nbsp;(src/.../post.schema.ts)</a>
                         </li>
                         <li>
-                            <a href="#postsProviders" title="src/module/post/product.providers.ts"><b>postsProviders</b>&nbsp;&nbsp;&nbsp;(src/.../product.providers.ts)</a>
+                            <a href="#postsProviders" title="src/module/post/post.providers.ts"><b>postsProviders</b>&nbsp;&nbsp;&nbsp;(src/.../post.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ProductSchema" title="src/module/product/schema/product.schema.ts"><b>ProductSchema</b>&nbsp;&nbsp;&nbsp;(src/.../product.schema.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#PROJECT_MODEL_PROVIDER" title="src/constants.ts"><b>PROJECT_MODEL_PROVIDER</b>&nbsp;&nbsp;&nbsp;(src/.../constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Provider" title="src/module/product/product.providers.ts"><b>Provider</b>&nbsp;&nbsp;&nbsp;(src/.../product.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Schema" title="src/module/product/schema/product.schema.ts"><b>Schema</b>&nbsp;&nbsp;&nbsp;(src/.../product.schema.ts)</a>
                         </li>
                         <li>
                             <a href="#" title="src/module/article/article.service.ts"><b></b>&nbsp;&nbsp;&nbsp;(src/.../article.service.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#" title="src/module/post/product.service.ts"><b></b>&nbsp;&nbsp;&nbsp;(src/.../product.service.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -206,6 +218,33 @@
 
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PROJECT_MODEL_PROVIDER"></a>
+                        <span class="name">
+                            <b>
+                            PROJECT_MODEL_PROVIDER</b>
+                            <a href="#PROJECT_MODEL_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&quot;ProjectConnectionToken&quot;</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
 </section>
     <h3>src/module/article/article.providers.ts</h3>
     <section>
@@ -317,7 +356,7 @@
     provide: DB_PROVIDER,
     useFactory: async () &#x3D;&gt; {
       (mongoose as any).Promise &#x3D; global.Promise;
-      return await mongoose.connect(&quot;mongodb://bchurunway:Node00bchurunway@128.199.64.153:27017/bchurunway&quot;);
+      return await mongoose.connect(&quot;mongodb+srv://rwadmin:6cfzUQv4jYcWsb7@cluster0-8wrsa.mongodb.net/test?retryWrites&#x3D;true&quot;);
     }
   }
 ]</code>
@@ -328,7 +367,37 @@
             </tbody>
         </table>
 </section>
-    <h3>src/module/post/schema/product.schema.ts</h3>
+    <h3>src/security/security-utils.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PAYLOAD_COMPONENTS"></a>
+                        <span class="name">
+                            <b>
+                            PAYLOAD_COMPONENTS</b>
+                            <a href="#PAYLOAD_COMPONENTS"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>2</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/module/post/schema/post.schema.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>
@@ -337,7 +406,7 @@
                         <a name="PostSchema"></a>
                         <span class="name">
                             <b>
-                            ProductSchema</b>
+                            PostSchema</b>
                             <a href="#PostSchema"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
@@ -372,7 +441,7 @@
             </tbody>
         </table>
 </section>
-    <h3>src/module/post/product.providers.ts</h3>
+    <h3>src/module/post/post.providers.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>
@@ -398,7 +467,133 @@
   {
     inject: [DB_PROVIDER],
     provide: POST_MODEL_PROVIDER,
-    useFactory: (connection: Connection) &#x3D;&gt; connection.model(&quot;Post&quot;, ProductSchema)
+    useFactory: (connection: Connection) &#x3D;&gt; connection.model(&quot;Post&quot;, PostSchema)
+  }
+]</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/module/product/schema/product.schema.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ProductSchema"></a>
+                        <span class="name">
+                            <b>
+                            ProductSchema</b>
+                            <a href="#ProductSchema"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new mongoose.Schema(
+  {
+    createdBy: {
+      required: true, // This shall refer to USER collection
+      type: String
+    },
+    description: {
+      type: String
+    },
+    isActive: {
+      default: false,
+      type: Boolean
+    },
+    isDeleted: {
+      default: false,
+      type: Boolean
+    },
+    masterProductId: {
+      type: { type: Schema.Types.ObjectId, ref: &quot;Product&quot; }
+    },
+    name: {
+      required: true,
+      type: String
+    },
+    productId: {
+      required: true,
+      type: String,
+      unique: true
+    },
+    productType: {
+      default: &quot;Soap&quot;,
+      required: true,
+      type: String
+    },
+    type: {
+      required: true,
+      type: String
+    },
+    useTime: {
+      type: String
+    }
+  },
+  {
+    timestamps: true
+  }
+)</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="Schema"></a>
+                        <span class="name">
+                            <b>
+                            Schema</b>
+                            <a href="#Schema"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>mongoose.Schema</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/module/product/product.providers.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="Provider"></a>
+                        <span class="name">
+                            <b>
+                            Provider</b>
+                            <a href="#Provider"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+  {
+    inject: [DB_PROVIDER],
+    provide: PROJECT_MODEL_PROVIDER,
+    useFactory: (connection: Connection) &#x3D;&gt; connection.model(&quot;Product&quot;, ProductSchema)
   }
 ]</code>
                         </td>
@@ -409,30 +604,6 @@
         </table>
 </section>
     <h3>src/module/article/article.service.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name=""></a>
-                        <span class="name">
-                            <b>
-                            </b>
-                            <a href="#"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>lodash</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>src/module/post/product.service.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>

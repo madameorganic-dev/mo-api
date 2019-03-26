@@ -15,6 +15,7 @@ export class ProductValidation extends JoiValidationPipe {
   }
 }
 
+// tslint:disable-next-line
 export class PostDeleteValidation extends JoiValidationPipe {
 
   public buildSchema(): object {

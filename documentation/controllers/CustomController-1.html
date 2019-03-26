@@ -54,14 +54,14 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/article/article.controller.ts</code>
+            <code>src/module/product/product.controller.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Prefix</h3>
             </p>
             <p class="comment">
-                <code>article</code>
+                <code>products</code>
             </p>
 
 
@@ -128,7 +128,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(values: <a href="../classes/ArticleDto.html">ArticleDto</a>)</code>
+                    <code>create(createPostDto: <a href="../classes/Product.html">Product</a>)</code>
                 </td>
             </tr>
 
@@ -136,14 +136,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiOperation({title: &#x27;Create Article&#x27;})<br />@ApiResponse({description: &#x27;The record has been successfully created.&#x27;, status: 201})<br />@ApiResponse({status: 403, description: &#x27;Forbidden.&#x27;})<br /></code>
+                    <code>@Post()<br />@ApiOperation({title: &#x27;Create Products&#x27;})<br />@ApiResponse({description: &#x27;The record has been successfully created.&#x27;, status: 201})<br />@ApiResponse({status: 403, description: &#x27;Forbidden.&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/module/article/article.controller.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/module/product/product.controller.ts:26</a></div>
                 </td>
             </tr>
 
@@ -163,9 +163,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>values</td>
+                                    <td>createPostDto</td>
                                     <td>
-                                                <code><a href="../classes/ArticleDto.html" target="_self" >ArticleDto</a></code>
+                                                <code><a href="../classes/Product.html" target="_self" >Product</a></code>
                                     </td>
 
                                     <td>
@@ -180,7 +180,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Product</a></code>
 
                     </div>
                     <div class="io-description">
@@ -207,7 +207,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>delete(params: Interface)</code>
+                    <code>delete(params: <a href="../classes/Product.html">Product</a>)</code>
                 </td>
             </tr>
 
@@ -215,14 +215,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
+                    <code>@Delete(&#x27;:id&#x27;)<br />@UsePipes(new PostDeleteValidation())<br />@ApiOperation({title: &#x27;Delete Products&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/module/article/article.controller.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/module/product/product.controller.ts:41</a></div>
                 </td>
             </tr>
 
@@ -244,7 +244,7 @@
                                 <tr>
                                     <td>params</td>
                                     <td>
-                                            <code>Interface</code>
+                                                <code><a href="../classes/Product.html" target="_self" >Product</a></code>
                                     </td>
 
                                     <td>
@@ -287,7 +287,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>list(query: Interface)</code>
+                    <code>list(query: <a href="../classes/Product.html">Product</a>)</code>
                 </td>
             </tr>
 
@@ -295,14 +295,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br /></code>
+                    <code>@Get()<br />@ApiOperation({title: &#x27;List Products&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/module/article/article.controller.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/module/product/product.controller.ts:33</a></div>
                 </td>
             </tr>
 
@@ -324,7 +324,7 @@
                                 <tr>
                                     <td>query</td>
                                     <td>
-                                            <code>Interface</code>
+                                                <code><a href="../classes/Product.html" target="_self" >Product</a></code>
                                     </td>
 
                                     <td>
@@ -339,7 +339,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;Interface[]&gt;</code>
+                        <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Promise&lt;Product[]&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -353,15 +353,17 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Param, Query, Delete } from &quot;@nestjs/common&quot;;
-import { ArticleDto } from &quot;./dto/article.dto&quot;;
-import { Service } from &quot;./article.service&quot;;
-import { IArticle as Interface } from &quot;./interface/article.interface&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Param, Query, Delete, UsePipes } from &quot;@nestjs/common&quot;;
+import { Product } from &quot;./dto/product&quot;;
+import { Service } from &quot;./product.service&quot;;
+import { IProduct as Interface } from &quot;./interface/product.interface&quot;;
 import { BaseController } from &quot;../Model/controller&quot;;
-import { ApiUseTags, ApiOperation, ApiResponse } from &quot;@nestjs/swagger&quot;;
+import { ProductValidation, PostDeleteValidation } from &quot;./Validation/product.validation&quot;;
+import { ApiBearerAuth, ApiUseTags, ApiOperation, ApiResponse } from &quot;@nestjs/swagger&quot;;
 
-@ApiUseTags(&quot;Article&quot;)
-@Controller(&quot;article&quot;)
+@ApiUseTags(&quot;Products&quot;)
+@Controller(&quot;products&quot;)
+@ApiBearerAuth()
 export class CustomController extends BaseController {
   constructor(private readonly postsService: Service) {
     super(postsService);
@@ -369,26 +371,30 @@ export class CustomController extends BaseController {
 
   // tslint:disable-next-line
   @Post()
-  @ApiOperation({ title: &quot;Create Article&quot; })
+  @ApiOperation({ title: &quot;Create Products&quot; })
   @ApiResponse(
     {
       description: &quot;The record has been successfully created.&quot;,
       status: 201
     })
   @ApiResponse({ status: 403, description: &quot;Forbidden.&quot; })
-  public create(@Body() values: ArticleDto): any {
-    return super.create(values);
+  public create(@Body() createPostDto: Product): Product {
+    return super.create(createPostDto);
   }
 
   // tslint:disable-next-line
   @Get()
-  public async list(@Query() query: Interface): Promise&lt;Interface[]&gt; {
+  @ApiOperation({ title: &quot;List Products&quot; })
+  public async list(@Query() query: Product): Promise&lt;Product[]&gt; {
     return super.list(query);
   }
 
+  // tslint:disable-next-line
   @Delete(&quot;:id&quot;)
-  public delete(@Param() params: Interface): any {
-    return super.delete(params.id);
+  @UsePipes(new PostDeleteValidation())
+  @ApiOperation({ title: &quot;Delete Products&quot; })
+  public delete(@Param() params: Product): any {
+    return super.delete(params);
   }
 }
 </code></pre>
@@ -424,7 +430,7 @@ export class CustomController extends BaseController {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'CustomController.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CustomController-1.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

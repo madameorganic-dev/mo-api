@@ -27,16 +27,22 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content controller">
+               <div class="content class">
                    <div class="content-data">
 
 
 
 
 
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Controllers</li>
-  <li>CustomController</li>
+  <li>Classes</li>
+  <li>PostDeleteValidation</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,17 +60,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/article/article.controller.ts</code>
+            <code>src/module/post/Validation/post.validation.ts</code>
         </p>
 
+
             <p class="comment">
-                <h3>Prefix</h3>
+                <h3>Extends</h3>
             </p>
             <p class="comment">
-                <code>article</code>
+                        <code><a href="../injectables/JoiValidationPipe.html" target="_self" >JoiValidationPipe</a></code>
             </p>
-
-
 
 
 
@@ -83,16 +88,16 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#create">create</a>
+                                <a href="#buildSchema">buildSchema</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#delete">delete</a>
+                                    <span class="modifier">Abstract</span>
+                                <a href="#buildSchema">buildSchema</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#list">list</a>
+                                <a href="#transform">transform</a>
                             </li>
                         </ul>
                     </td>
@@ -106,6 +111,8 @@
     </table>
 </section>
 
+
+
             <section>
     
     <h3 id="methods">
@@ -115,35 +122,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="create"></a>
+                    <a name="buildSchema"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Public</span>
-                            create
+                            buildSchema
                         </b>
-                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                        <a href="#buildSchema"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(values: <a href="../classes/ArticleDto.html">ArticleDto</a>)</code>
+                    <code>buildSchema()</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Post()<br />@ApiOperation({title: &#x27;Create Article&#x27;})<br />@ApiResponse({description: &#x27;The record has been successfully created.&#x27;, status: 201})<br />@ApiResponse({status: 403, description: &#x27;Forbidden.&#x27;})<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/module/article/article.controller.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/module/post/Validation/post.validation.ts:20</a></div>
                 </td>
             </tr>
 
@@ -152,39 +152,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>values</td>
-                                    <td>
-                                                <code><a href="../classes/ArticleDto.html" target="_self" >ArticleDto</a></code>
-                                    </td>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -194,35 +163,35 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="delete"></a>
+                    <a name="buildSchema"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Public</span>
-                            delete
+                            <span class="modifier">Abstract</span>
+                            buildSchema
                         </b>
-                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                        <a href="#buildSchema"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>delete(params: Interface)</code>
+                    <code>buildSchema()</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/module/article/article.controller.ts:35</a></div>
+                    <div class="io-line">Inherited from         <code><a href="../injectables/JoiValidationPipe.html" target="_self" >JoiValidationPipe</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../injectables/JoiValidationPipe.html#source" target="_self" >JoiValidationPipe:22</a></code>
+</div>
                 </td>
             </tr>
 
@@ -231,39 +200,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>params</td>
-                                    <td>
-                                            <code>Interface</code>
-                                    </td>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -273,36 +211,34 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="list"></a>
+                    <a name="transform"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Public</span>
-                            <span class="modifier">Async</span>
-                            list
+                            transform
                         </b>
-                        <a href="#list"><span class="icon ion-ios-link"></span></a>
+                        <a href="#transform"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>list(query: Interface)</code>
+                    <code>transform(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, metadata: ArgumentMetadata)</code>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Get()<br /></code>
-                </td>
-            </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/module/article/article.controller.ts:30</a></div>
+                    <div class="io-line">Inherited from         <code><a href="../injectables/JoiValidationPipe.html" target="_self" >JoiValidationPipe</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../injectables/JoiValidationPipe.html#source" target="_self" >JoiValidationPipe:6</a></code>
+</div>
                 </td>
             </tr>
 
@@ -322,9 +258,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>query</td>
+                                    <td>value</td>
                                     <td>
-                                            <code>Interface</code>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>metadata</td>
+                                    <td>
+                                            <code>ArgumentMetadata</code>
                                     </td>
 
                                     <td>
@@ -338,68 +286,51 @@
                     </div>
                     <div>
                     </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;Interface[]&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
                 </td>
             </tr>
         </tbody>
     </table>
-</section>    </div>
+</section>
+
+
+
+
+
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Param, Query, Delete } from &quot;@nestjs/common&quot;;
-import { ArticleDto } from &quot;./dto/article.dto&quot;;
-import { Service } from &quot;./article.service&quot;;
-import { IArticle as Interface } from &quot;./interface/article.interface&quot;;
-import { BaseController } from &quot;../Model/controller&quot;;
-import { ApiUseTags, ApiOperation, ApiResponse } from &quot;@nestjs/swagger&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import * as Joi from &quot;joi&quot;;
+import { JoiValidationPipe } from &quot;../../../Validation/validation.pipe&quot;;
 
-@ApiUseTags(&quot;Article&quot;)
-@Controller(&quot;article&quot;)
-export class CustomController extends BaseController {
-  constructor(private readonly postsService: Service) {
-    super(postsService);
+export class PostValidation extends JoiValidationPipe {
+
+  public buildSchema(): object {
+
+    return Joi.object(
+      {
+        content: Joi.string().required().max(50),
+        title: Joi.string().required(),
+        userId: Joi.string().required()
+      });
+
   }
+}
 
-  // tslint:disable-next-line
-  @Post()
-  @ApiOperation({ title: &quot;Create Article&quot; })
-  @ApiResponse(
-    {
-      description: &quot;The record has been successfully created.&quot;,
-      status: 201
-    })
-  @ApiResponse({ status: 403, description: &quot;Forbidden.&quot; })
-  public create(@Body() values: ArticleDto): any {
-    return super.create(values);
-  }
+export class PostDeleteValidation extends JoiValidationPipe {
 
-  // tslint:disable-next-line
-  @Get()
-  public async list(@Query() query: Interface): Promise&lt;Interface[]&gt; {
-    return super.list(query);
-  }
+  public buildSchema(): object {
 
-  @Delete(&quot;:id&quot;)
-  public delete(@Param() params: Interface): any {
-    return super.delete(params.id);
+    return Joi.object(
+      {
+        id: Joi.string().required()
+      });
+
   }
 }
 </code></pre>
     </div>
 </div>
-
-
-
-
-
-
 
 
 
@@ -423,8 +354,8 @@ export class CustomController extends BaseController {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'CustomController.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'PostDeleteValidation.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -16,7 +16,6 @@ export class CustomController extends BaseController {
 
   // tslint:disable-next-line
   @Post()
-  @UsePipes(new ProductValidation())
   @ApiOperation({ title: "Create Products" })
   @ApiResponse(
     {
@@ -24,14 +23,14 @@ export class CustomController extends BaseController {
       status: 201
     })
   @ApiResponse({ status: 403, description: "Forbidden." })
-  public async create(@Body() createPostDto: Product): Promise<Interface> {
-    return await super.create(createPostDto);
+  public create(@Body() createPostDto: Product): Product {
+    return super.create(createPostDto);
   }
 
   // tslint:disable-next-line
   @Get()
   @ApiOperation({ title: "List Products" })
-  public async list(@Query() query: Interface): Promise<Interface[]> {
+  public async list(@Query() query: Product): Promise<Product[]> {
     return super.list(query);
   }
 
@@ -39,7 +38,7 @@ export class CustomController extends BaseController {
   @Delete(":id")
   @UsePipes(new PostDeleteValidation())
   @ApiOperation({ title: "Delete Products" })
-  public delete(@Param() params: Interface): any {
+  public delete(@Param() params: Product): any {
     return super.delete(params);
   }
 }

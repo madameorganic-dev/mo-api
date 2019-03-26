@@ -114,7 +114,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/module/Model/model.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/module/Model/model.ts:14</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -265,6 +265,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Model, Types } from &quot;mongoose&quot;;
+import { LoggerService } from &quot;../../Middleware/Logger&quot;;
 
 export interface IBaseModelParamsInterface {
   options?: any;
@@ -284,10 +285,12 @@ export interface IBaseModelCtxInterface {
 export abstract class BaseModel {
   private readonly model: Model&lt;any&gt;;
   private readonly type: any;
+  private readonly logger: LoggerService;
 
   protected constructor(data: any, type: any) {
     this.model &#x3D; data;
     this.type &#x3D; type;
+    this.logger &#x3D; new LoggerService();
   }
 
   /**
@@ -295,9 +298,15 @@ export abstract class BaseModel {
    * @param values
    */
 
-  public create(values: any): any {
-    const object &#x3D; new this.model(values);
-    return object.save();
+  public async create(values: any): Promise&lt;any&gt; {
+    try {
+      const object &#x3D; new this.model(values);
+      const data &#x3D; await object.save();
+      return data;
+    } catch (error) {
+      this.logger.error(&#x60;${this.model.modelName}.create Failed. Error Details :  ${error}&#x60;);
+      throw error;
+    }
   }
 
   /**
@@ -334,12 +343,18 @@ export abstract class BaseModel {
     params: IBaseModelParamsInterface &#x3D; {},
     ctx: IBaseModelCtxInterface &#x3D; { sortBy: &quot;createdAt&quot;, sortType: -1, perPage: 30, page: 1 }
   ): any {
-    const { perPage, page, sortBy, sortType } &#x3D; ctx;
-    return this.model.find(params)
-      .sort({ [sortBy]: sortType })
-      .skip(perPage * (page - 1))
-      .limit(perPage)
-      .exec();
+    try {
+      this.logger.info(&#x60;${this.model.modelName}.list params&#x3D;${params} ctx&#x3D;${ctx}&#x60;);
+      const { perPage, page, sortBy, sortType } &#x3D; ctx;
+      return this.model.find(params)
+        .sort({ [sortBy]: sortType })
+        .skip(perPage * (page - 1))
+        .limit(perPage)
+        .exec();
+    } catch (error) {
+      this.logger.error(&#x60;${this.model.modelName}.list Failed. Error Details :  ${error}&#x60;);
+      throw error;
+    }
   }
 
   /**
@@ -348,6 +363,7 @@ export abstract class BaseModel {
    */
   public async delete(id: string): Promise&lt;void&gt; {
     try {
+      this.logger.info(&#x60;${this.model.modelName}.delete id&#x3D;${id}&#x60;);
       let model;
 
       if (Types.ObjectId.isValid(id)) {
@@ -360,6 +376,7 @@ export abstract class BaseModel {
         &#x60;ID: ${id} for model ${this.model.modelName} not found&#x60;
       );
     } catch (error) {
+      this.logger.error(&#x60;${this.model.modelName}.delete id&#x3D;${id} Failed. Error Details :  ${error}&#x60;);
       throw error;
     }
   }

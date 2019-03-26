@@ -27,7 +27,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content guard">
                    <div class="content-data">
 
 
@@ -38,11 +38,9 @@
 
 
 
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>AllExceptionsFilter</li>
+    <li>Guards</li>
+    <li>GuestGuard</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -55,25 +53,19 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-        <p class="comment">
+        <div class="tab-pane fade active in" id="c-info">
+            <p class="comment">
             <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/Middleware/errors.filter.ts</code>
-        </p>
-
-
-
-            <p class="comment">
-                <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code>ExceptionFilter</code>
+                <code>src/security/guest.guard.ts</code>
             </p>
 
 
-            <section>
+
+
+
+                <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -88,7 +80,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#catch">catch</a>
+                                <a href="#canActivate">canActivate</a>
                             </li>
                         </ul>
                     </td>
@@ -103,8 +95,7 @@
 </section>
 
 
-
-            <section>
+                <section>
     
     <h3 id="methods">
         Methods
@@ -113,28 +104,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="catch"></a>
+                    <a name="canActivate"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Public</span>
-                            catch
+                            canActivate
                         </b>
-                        <a href="#catch"><span class="icon ion-ios-link"></span></a>
+                        <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>catch(exception: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, host: ArgumentsHost)</code>
+                    <code>canActivate(context: ExecutionContext)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="5"
-                            class="link-to-prism">src/Middleware/errors.filter.ts:5</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="8"
+                            class="link-to-prism">src/security/guest.guard.ts:8</a></div>
                 </td>
             </tr>
 
@@ -154,21 +145,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>exception</td>
+                                    <td>context</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>host</td>
-                                    <td>
-                                            <code>ArgumentsHost</code>
+                                            <code>ExecutionContext</code>
                                     </td>
 
                                     <td>
@@ -183,7 +162,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>boolean | Promise | Observable</code>
 
                     </div>
                     <div class="io-description">
@@ -194,39 +173,29 @@
         </tbody>
     </table>
 </section>
+        </div>
 
 
+        <div class="tab-pane fade  tab-source-code" id="c-source">
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CanActivate, ExecutionContext, Injectable } from &quot;@nestjs/common&quot;;
+import * as _ from &quot;lodash&quot;;
+import { Observable } from &quot;rxjs&quot;;
 
+@Injectable()
+export class GuestGuard implements CanActivate {
 
+  public canActivate(context: ExecutionContext): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; {
 
-    </div>
-
-
-    <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ArgumentsHost, Catch, ExceptionFilter } from &quot;@nestjs/common&quot;;
-
-@Catch()
-export class AllExceptionsFilter implements ExceptionFilter {
-  public catch(exception: any, host: ArgumentsHost): any {
-    const ctx &#x3D; host.switchToHttp();
-    const response &#x3D; ctx.getResponse();
-    const request &#x3D; ctx.getRequest();
-    const status &#x3D; exception ? exception.getStatus() : 500;
-
-    response.status(500).json(
-      {
-        error: true,
-        message: exception.toString(),
-        path: request.url,
-        stack: exception,
-        statusCode: status,
-        timestamp: new Date().toISOString()
-      });
+    const header &#x3D; context.switchToHttp().getRequest().header(&quot;Authorization&quot;);
+    return _.isEmpty(header);
   }
+
 }
 </code></pre>
-    </div>
+        </div>
 </div>
+
+
 
 
 
@@ -250,8 +219,8 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'AllExceptionsFilter.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
+            var COMPODOC_CURRENT_PAGE_URL = 'GuestGuard.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

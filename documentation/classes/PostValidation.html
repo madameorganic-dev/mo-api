@@ -42,7 +42,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li>ProductValidation</li>
+  <li>PostValidation</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -60,7 +60,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/post/Validation/product.validation.ts</code>
+            <code>src/module/post/Validation/post.validation.ts</code>
         </p>
 
 
@@ -143,7 +143,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="6"
-                            class="link-to-prism">src/module/post/Validation/product.validation.ts:6</a></div>
+                            class="link-to-prism">src/module/post/Validation/post.validation.ts:6</a></div>
                 </td>
             </tr>
 
@@ -303,7 +303,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import * as Joi from &quot;joi&quot;;
 import { JoiValidationPipe } from &quot;../../../Validation/validation.pipe&quot;;
 
-export class ProductValidation extends JoiValidationPipe {
+export class PostValidation extends JoiValidationPipe {
 
   public buildSchema(): object {
 
@@ -312,6 +312,18 @@ export class ProductValidation extends JoiValidationPipe {
         content: Joi.string().required().max(50),
         title: Joi.string().required(),
         userId: Joi.string().required()
+      });
+
+  }
+}
+
+export class PostDeleteValidation extends JoiValidationPipe {
+
+  public buildSchema(): object {
+
+    return Joi.object(
+      {
+        id: Joi.string().required()
       });
 
   }
@@ -343,7 +355,7 @@ export class ProductValidation extends JoiValidationPipe {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'ProductValidation.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PostValidation.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
