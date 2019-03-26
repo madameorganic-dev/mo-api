@@ -9,7 +9,7 @@ export abstract class BaseController {
 
   @Post()
   public create(@Body() values: any): any {
-    this.controller.create(values);
+    return this.controller.create(values);
   }
 
   @Get()
