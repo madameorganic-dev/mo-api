@@ -54,7 +54,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/post/product.controller.ts</code>
+            <code>src/module/post/post.controller.ts</code>
         </p>
 
             <p class="comment">
@@ -83,6 +83,7 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#create">create</a>
                             </li>
                             <li>
@@ -119,6 +120,7 @@
                     <span class="name">
                         <b>
                             <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
                             create
                         </b>
                         <a href="#create"><span class="icon ion-ios-link"></span></a>
@@ -128,7 +130,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createPostDto: <a href="../classes/CreatePostDto.html">Product</a>)</code>
+                    <code>create(createPostDto: <a href="../classes/CreatePostDto.html">CreatePostDto</a>)</code>
                 </td>
             </tr>
 
@@ -136,14 +138,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@UsePipes(new ProductValidation())<br />@ApiOperation({title: &#x27;Create Posts&#x27;})<br />@ApiResponse({description: &#x27;The record has been successfully created.&#x27;, status: 201})<br /></code>
+                    <code>@Post()<br />@UsePipes(new PostValidation())<br />@ApiOperation({title: &#x27;Create Posts&#x27;})<br />@ApiResponse({description: &#x27;The record has been successfully created.&#x27;, status: 201})<br />@ApiResponse({status: 403, description: &#x27;Forbidden.&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/module/post/product.controller.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/module/post/post.controller.ts:27</a></div>
                 </td>
             </tr>
 
@@ -165,7 +167,7 @@
                                 <tr>
                                     <td>createPostDto</td>
                                     <td>
-                                                <code><a href="../classes/CreatePostDto.html" target="_self" >Product</a></code>
+                                                <code><a href="../classes/CreatePostDto.html" target="_self" >CreatePostDto</a></code>
                                     </td>
 
                                     <td>
@@ -180,7 +182,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;Interface&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -215,14 +217,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br />@ApiOperation({title: &#x27;Delete Posts&#x27;})<br /></code>
+                    <code>@Delete(&#x27;:id&#x27;)<br />@UsePipes(new PostDeleteValidation())<br />@ApiOperation({title: &#x27;Delete Posts&#x27;})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/module/post/product.controller.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/module/post/post.controller.ts:42</a></div>
                 </td>
             </tr>
 
@@ -301,8 +303,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/module/post/product.controller.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/module/post/post.controller.ts:34</a></div>
                 </td>
             </tr>
 
@@ -354,15 +356,16 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Param, Query, Delete, UsePipes } from &quot;@nestjs/common&quot;;
-import { Product } from &quot;./dto/create-post.dto&quot;;
+import { CreatePostDto } from &quot;./dto/create-post.dto&quot;;
 import { PostsService } from &quot;./post.service&quot;;
 import { IPost as Interface } from &quot;./interface/post.interface&quot;;
 import { BaseController } from &quot;../Model/controller&quot;;
-import { ProductValidation } from &quot;./Validation/post.validation&quot;;
-import { ApiUseTags, ApiOperation, ApiResponse } from &quot;@nestjs/swagger&quot;;
+import { PostValidation, PostDeleteValidation } from &quot;./Validation/post.validation&quot;;
+import { ApiBearerAuth, ApiUseTags, ApiOperation, ApiResponse } from &quot;@nestjs/swagger&quot;;
 
-@ApiUseTags(&quot;posts&quot;)
+@ApiUseTags(&quot;Posts&quot;)
 @Controller(&quot;posts&quot;)
+@ApiBearerAuth()
 export class PostsController extends BaseController {
   constructor(private readonly postsService: PostsService) {
     super(postsService);
@@ -370,15 +373,16 @@ export class PostsController extends BaseController {
 
   // tslint:disable-next-line
   @Post()
-  @UsePipes(new ProductValidation())
+  @UsePipes(new PostValidation())
   @ApiOperation({ title: &quot;Create Posts&quot; })
   @ApiResponse(
     {
       description: &quot;The record has been successfully created.&quot;,
       status: 201
     })
-  public create(@Body() createPostDto: Product): any {
-    return super.create(createPostDto);
+  @ApiResponse({ status: 403, description: &quot;Forbidden.&quot; })
+  public async create(@Body() createPostDto: CreatePostDto): Promise&lt;Interface&gt; {
+    return await super.create(createPostDto);
   }
 
   // tslint:disable-next-line
@@ -390,9 +394,10 @@ export class PostsController extends BaseController {
 
   // tslint:disable-next-line
   @Delete(&quot;:id&quot;)
+  @UsePipes(new PostDeleteValidation())
   @ApiOperation({ title: &quot;Delete Posts&quot; })
   public delete(@Param() params: Interface): any {
-    return super.delete(params.id);
+    return super.delete(params);
   }
 }
 </code></pre>

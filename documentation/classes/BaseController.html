@@ -102,6 +102,7 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#delete">delete</a>
                             </li>
                             <li>
@@ -299,6 +300,7 @@
                     <span class="name">
                         <b>
                             <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
                             delete
                         </b>
                         <a href="#delete"><span class="icon ion-ios-link"></span></a>
@@ -360,7 +362,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;any[]&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -480,7 +482,7 @@ export abstract class BaseController {
   }
 
   @Delete(&quot;:id&quot;)
-  public delete(@Param() params: any): any {
+  public async delete(@Param() params: any): Promise&lt;any[]&gt; {
     return this.controller.delete(params.id);
   }
 }

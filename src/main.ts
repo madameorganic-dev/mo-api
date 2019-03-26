@@ -5,12 +5,14 @@ import * as rateLimit from "express-rate-limit";
 import { AllExceptionsFilter } from "./Middleware/errors.filter";
 import * as compression from "compression";
 import { createSwagger } from "./Middleware/swagger";
+import { ValidationPipe } from "@nestjs/common";
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(
     AppModule
   );
   // Middleware
+  app.useGlobalPipes(new ValidationPipe());
 
   app.use(compression());
   app.use(helmet());
