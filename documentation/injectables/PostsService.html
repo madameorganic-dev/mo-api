@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/post/post.service.ts</code>
+            <code>src/module/post/product.service.ts</code>
         </p>
 
 
@@ -143,7 +143,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/module/post/post.service.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/module/post/product.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -618,7 +618,7 @@ import * as lodash from &quot;lodash&quot;;
 
 const { omitBy, isNil } &#x3D; lodash;
 import { IPost } from &quot;./interface/post.interface&quot;;
-import { CreatePostDto } from &quot;./dto/create-post.dto&quot;;
+import { Product } from &quot;./dto/create-post.dto&quot;;
 import { POST_MODEL_PROVIDER } from &quot;../../constants&quot;;
 import { BaseModel, IBaseModelParamsInterface } from &quot;../Model/model&quot;;
 
@@ -633,10 +633,10 @@ export class PostsService extends BaseModel {
 
   constructor(
     @Inject(POST_MODEL_PROVIDER) private readonly postModel: Model&lt;IPost&gt;) {
-    super(postModel, CreatePostDto);
+    super(postModel, Product);
   }
 
-  // public create(createPostDto: CreatePostDto): IPost {
+  // public create(createPostDto: Product): IPost {
   //   const createdPost &#x3D; new this.postModel(createPostDto); // Use this to make sure the type is correct, can remove this by default
   //   return super.create(createdPost);
   // }

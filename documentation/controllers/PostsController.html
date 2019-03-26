@@ -54,7 +54,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/post/post.controller.ts</code>
+            <code>src/module/post/product.controller.ts</code>
         </p>
 
             <p class="comment">
@@ -128,7 +128,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createPostDto: <a href="../classes/CreatePostDto.html">CreatePostDto</a>)</code>
+                    <code>create(createPostDto: <a href="../classes/CreatePostDto.html">Product</a>)</code>
                 </td>
             </tr>
 
@@ -136,14 +136,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@UsePipes(new PostValidation())<br />@ApiOperation({title: &#x27;Create Posts&#x27;})<br />@ApiResponse({description: &#x27;The record has been successfully created.&#x27;, status: 201})<br /></code>
+                    <code>@Post()<br />@UsePipes(new ProductValidation())<br />@ApiOperation({title: &#x27;Create Posts&#x27;})<br />@ApiResponse({description: &#x27;The record has been successfully created.&#x27;, status: 201})<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/module/post/post.controller.ts:25</a></div>
+                            class="link-to-prism">src/module/post/product.controller.ts:25</a></div>
                 </td>
             </tr>
 
@@ -165,7 +165,7 @@
                                 <tr>
                                     <td>createPostDto</td>
                                     <td>
-                                                <code><a href="../classes/CreatePostDto.html" target="_self" >CreatePostDto</a></code>
+                                                <code><a href="../classes/CreatePostDto.html" target="_self" >Product</a></code>
                                     </td>
 
                                     <td>
@@ -222,7 +222,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/module/post/post.controller.ts:39</a></div>
+                            class="link-to-prism">src/module/post/product.controller.ts:39</a></div>
                 </td>
             </tr>
 
@@ -302,7 +302,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/module/post/post.controller.ts:32</a></div>
+                            class="link-to-prism">src/module/post/product.controller.ts:32</a></div>
                 </td>
             </tr>
 
@@ -354,11 +354,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Param, Query, Delete, UsePipes } from &quot;@nestjs/common&quot;;
-import { CreatePostDto } from &quot;./dto/create-post.dto&quot;;
+import { Product } from &quot;./dto/create-post.dto&quot;;
 import { PostsService } from &quot;./post.service&quot;;
 import { IPost as Interface } from &quot;./interface/post.interface&quot;;
 import { BaseController } from &quot;../Model/controller&quot;;
-import { PostValidation } from &quot;./Validation/post.validation&quot;;
+import { ProductValidation } from &quot;./Validation/post.validation&quot;;
 import { ApiUseTags, ApiOperation, ApiResponse } from &quot;@nestjs/swagger&quot;;
 
 @ApiUseTags(&quot;posts&quot;)
@@ -370,14 +370,14 @@ export class PostsController extends BaseController {
 
   // tslint:disable-next-line
   @Post()
-  @UsePipes(new PostValidation())
+  @UsePipes(new ProductValidation())
   @ApiOperation({ title: &quot;Create Posts&quot; })
   @ApiResponse(
     {
       description: &quot;The record has been successfully created.&quot;,
       status: 201
     })
-  public create(@Body() createPostDto: CreatePostDto): any {
+  public create(@Body() createPostDto: Product): any {
     return super.create(createPostDto);
   }
 

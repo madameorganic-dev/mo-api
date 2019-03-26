@@ -36,7 +36,6 @@ export abstract class BaseModel {
     try {
       const object = new this.model(values);
       const data = await object.save();
-      console.log("parent", data);
       return data;
     } catch (error) {
       this.logger.error(`${this.model.modelName}.create Failed. Error Details :  ${error}`);

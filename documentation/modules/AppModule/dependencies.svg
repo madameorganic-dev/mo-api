@@ -46,15 +46,15 @@
 <path fill="none" stroke="#000000" d="M267.8096,-122.1061C267.8096,-122.1061 267.8096,-140.991 267.8096,-140.991"/>
 <polygon fill="#000000" stroke="#000000" points="264.3097,-140.9909 267.8096,-150.991 271.3097,-140.991 264.3097,-140.9909"/>
 </g>
-<!-- PostModule -->
+<!-- ProductModule -->
 <g id="node2" class="node">
-<title>PostModule</title>
+<title>ProductModule</title>
 <polygon fill="#8dd3c7" stroke="#000000" points="231.6683,-122 228.6683,-126 207.6683,-126 204.6683,-122 148.3317,-122 148.3317,-86 231.6683,-86 231.6683,-122"/>
-<text text-anchor="middle" x="190" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">PostModule</text>
+<text text-anchor="middle" x="190" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ProductModule</text>
 </g>
-<!-- PostModule&#45;&gt;AppModule -->
+<!-- ProductModule&#45;&gt;AppModule -->
 <g id="edge2" class="edge">
-<title>PostModule&#45;&gt;AppModule</title>
+<title>ProductModule&#45;&gt;AppModule</title>
 <path fill="none" stroke="#000000" d="M217.0028,-122.1061C217.0028,-122.1061 217.0028,-140.991 217.0028,-140.991"/>
 <polygon fill="#000000" stroke="#000000" points="213.5029,-140.9909 217.0028,-150.991 220.5029,-140.991 213.5029,-140.9909"/>
 </g>

@@ -26,7 +26,7 @@ async function bootstrap(): Promise<void> {
   createSwagger(app);
   app.useGlobalFilters(new AllExceptionsFilter());
 
-  await app.listen(8887);
+  await app.listen(7777);
 }
 
 bootstrap().catch((err) => console.error(err));
