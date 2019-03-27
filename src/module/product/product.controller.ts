@@ -30,7 +30,7 @@ export class CustomController extends BaseController {
   // tslint:disable-next-line
   @Get()
   @ApiOperation({ title: "List Products" })
-  public async list(@Query() query: Product): Promise<Product[]> {
+  public async list(@Query() query: any): Promise<Product[]> {
     return super.list(query);
   }
 
