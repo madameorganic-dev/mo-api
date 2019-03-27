@@ -8,7 +8,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const request = ctx.getRequest();
     const status = exception ? exception.getStatus() : 500;
 
-    response.status(500).json(
+    response.status(status).json(
       {
         error: true,
         message: exception.toString(),

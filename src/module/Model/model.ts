@@ -1,5 +1,7 @@
 import { Model, Types } from "mongoose";
 import { LoggerService } from "../../Middleware/Logger";
+import { RpcException } from '@nestjs/microservices';
+import { HttpException } from "@nestjs/common";
 
 export interface IBaseModelParamsInterface {
   options?: any;
@@ -39,7 +41,7 @@ export abstract class BaseModel {
       return data;
     } catch (error) {
       this.logger.error(`${this.model.modelName}.create Failed. Error Details :  ${error}`);
-      throw error;
+      throw new HttpException( error, 500);
     }
   }
 
