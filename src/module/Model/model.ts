@@ -38,10 +38,11 @@ export abstract class BaseModel {
     try {
       const object = new this.model(values);
       const data = await object.save();
+      //TODO Log Everything
       return data;
     } catch (error) {
       this.logger.error(`${this.model.modelName}.create Failed. Error Details :  ${error}`);
-      throw new HttpException( error, 500);
+      throw new HttpException(error, 500);
     }
   }
 
@@ -51,20 +52,20 @@ export abstract class BaseModel {
    * @return Model<any>
    */
   public async get(id: string): Promise<any> {
+    console.log("get", id);
     try {
       let model;
-
+      this.logger.info(`${this.model.modelName}.get one product is called`);
       if (Types.ObjectId.isValid(id)) {
         model = await this.model.findById(id).exec();
       }
       if (model) {
         return model;
       }
-      throw new Error(
-        `ID: ${id} for model ${this.model.modelName} not found`
-      );
+      throw `ID: ${id} for model ${this.model.modelName} not found`;
     } catch (error) {
-      throw error;
+      this.logger.error(`ID: ${id} for model ${this.model.modelName} not found`);
+      throw new HttpException(error, 500);
     }
   }
 
@@ -89,12 +90,34 @@ export abstract class BaseModel {
         .exec();
     } catch (error) {
       this.logger.error(`${this.model.modelName}.list Failed. Error Details :  ${error}`);
-      throw error;
+      throw new HttpException(error, 500);
     }
   }
 
   /**
-   * Delete user
+   * update
+   */
+  public async update(id: string, values: any): Promise<void> {
+    try {
+      let model;
+      if (Types.ObjectId.isValid(id)) {
+        model = await this.model.findById(id).exec();
+      }
+      if (!model) {
+        throw new Error(
+          `ID: ${id} for model ${this.model.modelName} not found`
+        );
+      }
+      return await this.model.findByIdAndUpdate(id, values, { new: true });
+    } catch (error) {
+      this.logger.error(`${this.model.modelName}.update id=${id} Failed. Error Details :  ${error}`);
+      throw new HttpException(error, 500);
+    }
+  }
+
+
+  /**
+   * Delete
    * @public
    */
   public async delete(id: string): Promise<void> {
@@ -113,7 +136,7 @@ export abstract class BaseModel {
       );
     } catch (error) {
       this.logger.error(`${this.model.modelName}.delete id=${id} Failed. Error Details :  ${error}`);
-      throw error;
+      throw new HttpException(error, 500);
     }
   }
 }

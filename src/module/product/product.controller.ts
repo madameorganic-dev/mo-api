@@ -35,6 +35,13 @@ export class CustomController extends BaseController {
   }
 
   // tslint:disable-next-line
+  @Get(':id')
+  @ApiOperation({ title: "Get One Product" })
+  public async get(@Param() params: any): Promise<Product> {
+    return super.get(params);
+  }
+
+  // tslint:disable-next-line
   @Delete(":id")
   @UsePipes(new PostDeleteValidation())
   @ApiOperation({ title: "Delete Products" })
