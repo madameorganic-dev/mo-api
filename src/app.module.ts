@@ -4,7 +4,7 @@ import { ArticleModule } from "./module/article/article.module";
 import { ProductModule } from "./module/product/product.module";
 
 @Module({
-          imports: [PostModule, ArticleModule, ProductModule],
+          imports: [PostModule, ArticleModule, ProductModule]
         })
 export class AppModule {
 }

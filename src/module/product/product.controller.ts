@@ -1,9 +1,8 @@
 import { Controller, Get, Post, Body, Param, Query, Delete, UsePipes } from "@nestjs/common";
 import { Product } from "./dto/product";
 import { Service } from "./product.service";
-import { IProduct as Interface } from "./interface/product.interface";
 import { BaseController } from "../Model/controller";
-import { ProductValidation, PostDeleteValidation } from "./Validation/product.validation";
+import { PostDeleteValidation } from "./Validation/product.validation";
 import { ApiBearerAuth, ApiUseTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
 
 @ApiUseTags("Products")
@@ -35,7 +34,7 @@ export class CustomController extends BaseController {
   }
 
   // tslint:disable-next-line
-  @Get(':id')
+  @Get(":id")
   @ApiOperation({ title: "Get One Product" })
   public async get(@Param() params: any): Promise<Product> {
     return super.get(params);

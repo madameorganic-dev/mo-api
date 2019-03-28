@@ -1,6 +1,6 @@
 import { Model, Types } from "mongoose";
 import { LoggerService } from "../../Middleware/Logger";
-import { RpcException } from '@nestjs/microservices';
+import { RpcException } from "@nestjs/microservices";
 import { HttpException } from "@nestjs/common";
 
 export interface IBaseModelParamsInterface {
@@ -37,9 +37,7 @@ export abstract class BaseModel {
   public async create(values: any): Promise<any> {
     try {
       const object = new this.model(values);
-      const data = await object.save();
-      //TODO Log Everything
-      return data;
+      return await object.save();
     } catch (error) {
       this.logger.error(`${this.model.modelName}.create Failed. Error Details :  ${error}`);
       throw new HttpException(error, 500);
@@ -52,7 +50,6 @@ export abstract class BaseModel {
    * @return Model<any>
    */
   public async get(id: string): Promise<any> {
-    console.log("get", id);
     try {
       let model;
       this.logger.info(`${this.model.modelName}.get one product is called`);
@@ -62,7 +59,7 @@ export abstract class BaseModel {
       if (model) {
         return model;
       }
-      throw `ID: ${id} for model ${this.model.modelName} not found`;
+      throw new Error(`ID: ${id} for model ${this.model.modelName} not found`);
     } catch (error) {
       this.logger.error(`ID: ${id} for model ${this.model.modelName} not found`);
       throw new HttpException(error, 500);
@@ -114,7 +111,6 @@ export abstract class BaseModel {
       throw new HttpException(error, 500);
     }
   }
-
 
   /**
    * Delete
