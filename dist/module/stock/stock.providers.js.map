@@ -1,0 +1,1 @@
+{"version":3,"file":"stock.providers.js","sourceRoot":"","sources":["../../../src/module/stock/stock.providers.ts"],"names":[],"mappings":";;AACA,wDAAoD;AACpD,+CAAoE;AAEvD,QAAA,QAAQ,GAAG;IACtB;QACE,MAAM,EAAE,CAAC,uBAAW,CAAC;QACrB,OAAO,EAAE,gCAAoB;QAC7B,UAAU,EAAE,CAAC,UAAsB,EAAE,EAAE,CAAC,UAAU,CAAC,KAAK,CAAC,OAAO,EAAE,0BAAW,CAAC;KAC/E;CACF,CAAC"}

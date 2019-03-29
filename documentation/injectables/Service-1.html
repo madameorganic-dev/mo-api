@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/product/product.service.ts</code>
+            <code>src/module/product/stock.service.ts</code>
         </p>
 
 
@@ -149,7 +149,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/module/product/product.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/module/product/stock.service.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -658,7 +658,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Model } from &quot;mongoose&quot;;
 import { Injectable, Inject } from &quot;@nestjs/common&quot;;
 import { IProduct } from &quot;./interface/product.interface&quot;;
-import { Product } from &quot;./dto/product&quot;;
+import { Stock } from &quot;./dto/product&quot;;
 import { PROJECT_MODEL_PROVIDER } from &quot;../../constants&quot;;
 import { BaseModel } from &quot;../Model/model&quot;;
 
@@ -666,7 +666,7 @@ import { BaseModel } from &quot;../Model/model&quot;;
 export class Service extends BaseModel {
   constructor(
     @Inject(PROJECT_MODEL_PROVIDER) private readonly postModel: Model&lt;IProduct&gt;) {
-    super(postModel, Product);
+    super(postModel, Stock);
   }
 }
 </code></pre>

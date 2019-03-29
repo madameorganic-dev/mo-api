@@ -20,7 +20,7 @@ export const ProductSchema = new mongoose.Schema(
       type: Boolean
     },
     masterProductId: {
-      type: { type: Schema.Types.ObjectId, ref: "Product" }
+      type: { type: Schema.Types.ObjectId, ref: "Stock" }
     },
     name: {
       required: true,

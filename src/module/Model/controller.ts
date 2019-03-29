@@ -8,8 +8,8 @@ export abstract class BaseController {
   }
 
   @Post()
-  public create(@Body() values: any): any {
-    return this.controller.create(values);
+  public create(@Body() values: any, many: boolean = false): any {
+    return this.controller.create(values, many);
   }
 
   @Get()

@@ -54,7 +54,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/product/product.controller.ts</code>
+            <code>src/module/product/stock.controller.ts</code>
         </p>
 
             <p class="comment">
@@ -128,7 +128,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(createPostDto: <a href="../classes/Product.html">Product</a>)</code>
+                    <code>create(createPostDto: <a href="../classes/Product.html">Stock</a>)</code>
                 </td>
             </tr>
 
@@ -143,7 +143,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/module/product/product.controller.ts:26</a></div>
+                            class="link-to-prism">src/module/product/stock.controller.ts:26</a></div>
                 </td>
             </tr>
 
@@ -165,7 +165,7 @@
                                 <tr>
                                     <td>createPostDto</td>
                                     <td>
-                                                <code><a href="../classes/Product.html" target="_self" >Product</a></code>
+                                                <code><a href="../classes/Product.html" target="_self" >Stock</a></code>
                                     </td>
 
                                     <td>
@@ -180,7 +180,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Product</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Stock</a></code>
 
                     </div>
                     <div class="io-description">
@@ -207,7 +207,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>delete(params: <a href="../classes/Product.html">Product</a>)</code>
+                    <code>delete(params: <a href="../classes/Product.html">Stock</a>)</code>
                 </td>
             </tr>
 
@@ -222,7 +222,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">src/module/product/product.controller.ts:41</a></div>
+                            class="link-to-prism">src/module/product/stock.controller.ts:41</a></div>
                 </td>
             </tr>
 
@@ -244,7 +244,7 @@
                                 <tr>
                                     <td>params</td>
                                     <td>
-                                                <code><a href="../classes/Product.html" target="_self" >Product</a></code>
+                                                <code><a href="../classes/Product.html" target="_self" >Stock</a></code>
                                     </td>
 
                                     <td>
@@ -287,7 +287,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>list(query: <a href="../classes/Product.html">Product</a>)</code>
+                    <code>list(query: <a href="../classes/Product.html">Stock</a>)</code>
                 </td>
             </tr>
 
@@ -302,7 +302,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/module/product/product.controller.ts:33</a></div>
+                            class="link-to-prism">src/module/product/stock.controller.ts:33</a></div>
                 </td>
             </tr>
 
@@ -324,7 +324,7 @@
                                 <tr>
                                     <td>query</td>
                                     <td>
-                                                <code><a href="../classes/Product.html" target="_self" >Product</a></code>
+                                                <code><a href="../classes/Product.html" target="_self" >Stock</a></code>
                                     </td>
 
                                     <td>
@@ -339,7 +339,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Promise&lt;Product[]&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/Product.html" target="_self" >Promise&lt;Stock[]&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -354,7 +354,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Param, Query, Delete, UsePipes } from &quot;@nestjs/common&quot;;
-import { Product } from &quot;./dto/product&quot;;
+import { Stock } from &quot;./dto/product&quot;;
 import { Service } from &quot;./product.service&quot;;
 import { IProduct as Interface } from &quot;./interface/product.interface&quot;;
 import { BaseController } from &quot;../Model/controller&quot;;
@@ -378,14 +378,14 @@ export class CustomController extends BaseController {
       status: 201
     })
   @ApiResponse({ status: 403, description: &quot;Forbidden.&quot; })
-  public create(@Body() createPostDto: Product): Product {
+  public create(@Body() createPostDto: Stock): Stock {
     return super.create(createPostDto);
   }
 
   // tslint:disable-next-line
   @Get()
   @ApiOperation({ title: &quot;List Products&quot; })
-  public async list(@Query() query: Product): Promise&lt;Product[]&gt; {
+  public async list(@Query() query: Stock): Promise&lt;Stock[]&gt; {
     return super.list(query);
   }
 
@@ -393,7 +393,7 @@ export class CustomController extends BaseController {
   @Delete(&quot;:id&quot;)
   @UsePipes(new PostDeleteValidation())
   @ApiOperation({ title: &quot;Delete Products&quot; })
-  public delete(@Param() params: Product): any {
+  public delete(@Param() params: Stock): any {
     return super.delete(params);
   }
 }

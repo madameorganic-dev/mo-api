@@ -35,7 +35,7 @@ export class CustomController extends BaseController {
 
   // tslint:disable-next-line
   @Get(":id")
-  @ApiOperation({ title: "Get One Product" })
+  @ApiOperation({ title: "Get One Stock" })
   public async get(@Param() params: any): Promise<Product> {
     return super.get(params);
   }

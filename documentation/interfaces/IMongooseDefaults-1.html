@@ -61,7 +61,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/module/post/product.service.ts</code>
+            <code>src/module/post/stock.service.ts</code>
         </p>
 
 
@@ -144,7 +144,7 @@ import * as lodash from &quot;lodash&quot;;
 
 const { omitBy, isNil } &#x3D; lodash;
 import { IPost } from &quot;./interface/post.interface&quot;;
-import { Product } from &quot;./dto/create-post.dto&quot;;
+import { Stock } from &quot;./dto/create-post.dto&quot;;
 import { POST_MODEL_PROVIDER } from &quot;../../constants&quot;;
 import { BaseModel, IBaseModelParamsInterface } from &quot;../Model/model&quot;;
 
@@ -159,10 +159,10 @@ export class PostsService extends BaseModel {
 
   constructor(
     @Inject(POST_MODEL_PROVIDER) private readonly postModel: Model&lt;IPost&gt;) {
-    super(postModel, Product);
+    super(postModel, Stock);
   }
 
-  // public create(createPostDto: Product): IPost {
+  // public create(createPostDto: Stock): IPost {
   //   const createdPost &#x3D; new this.postModel(createPostDto); // Use this to make sure the type is correct, can remove this by default
   //   return super.create(createdPost);
   // }

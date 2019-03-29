@@ -1,0 +1,1 @@
+{"version":3,"file":"product.providers.js","sourceRoot":"","sources":["../../../src/module/product/product.providers.ts"],"names":[],"mappings":";;AAEA,4DAAwD;AACxD,+CAAsE;AAEzD,QAAA,QAAQ,GAAG;IACtB;QACE,MAAM,EAAE,CAAC,uBAAW,CAAC;QACrB,OAAO,EAAE,kCAAsB;QAC/B,UAAU,EAAE,CAAC,UAAsB,EAAE,EAAE,CAAC,UAAU,CAAC,KAAK,CAAC,OAAO,EAAE,8BAAa,CAAC;KACjF;CACF,CAAC"}

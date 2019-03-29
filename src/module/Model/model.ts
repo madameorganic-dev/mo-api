@@ -34,10 +34,14 @@ export abstract class BaseModel {
    * @param values
    */
 
-  public async create(values: any): Promise<any> {
+  public async create(values: any, many: boolean): Promise<any> {
     try {
-      const object = new this.model(values);
-      return await object.save();
+      if (many) {
+        return await this.model.insertMany(values);
+      } else {
+        const object = new this.model(values);
+        return await object.save();
+      }
     } catch (error) {
       this.logger.error(`${this.model.modelName}.create Failed. Error Details :  ${error}`);
       throw new HttpException(error, 500);
