@@ -25,7 +25,7 @@ export class Service extends BaseModel {
 
   public create(value: ArticleDto): any {
     const createdPost = new this.postModel(value); // Use this to make sure the type is correct, can remove this by default
-    return super.create(createdPost);
+    return super.create(createdPost, false);
   }
 
   /**

@@ -2,7 +2,6 @@ import { Model, Types } from "mongoose";
 import { LoggerService } from "../../Middleware/Logger";
 import { RpcException } from "@nestjs/microservices";
 import { HttpException } from "@nestjs/common";
-
 export interface IBaseModelParamsInterface {
   options?: any;
 
