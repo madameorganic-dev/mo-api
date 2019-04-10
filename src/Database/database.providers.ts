@@ -6,7 +6,7 @@ export const databaseProviders = [
     provide: DB_PROVIDER,
     useFactory: async () => {
       (mongoose as any).Promise = global.Promise;
-      return await mongoose.connect("mongodb+srv://rwadmin:6cfzUQv4jYcWsb7@cluster0-8wrsa.mongodb.net/test?retryWrites=true");
+      return await mongoose.connect("mongodb+srv://rwadmin:6cfzUQv4jYcWsb7@cluster0-8wrsa.mongodb.net/test?retryWrites=true", { useNewUrlParser: true });
     }
   }
 ];

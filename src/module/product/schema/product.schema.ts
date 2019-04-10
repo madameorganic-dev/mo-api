@@ -1,8 +1,13 @@
+/* tslint:disable:no-invalid-this */
 import * as mongoose from "mongoose";
+import { Schema } from "mongoose";
+import { NextFunction } from "express";
+import { IProduct } from "../interface/product.interface";
+import { Document } from "mongoose";
 
-const Schema = mongoose.Schema;
+export type TProducts = IProduct & Document;
 
-export const ProductSchema = new mongoose.Schema(
+export const ProductSchema: Schema = new mongoose.Schema(
   {
     createdBy: {
       required: true, // This shall refer to USER collection
@@ -19,32 +24,44 @@ export const ProductSchema = new mongoose.Schema(
       default: false,
       type: Boolean
     },
-    masterProductId: {
-      type: { type: Schema.Types.ObjectId, ref: "Stock" }
-    },
+    masterProductId: { type: Schema.Types.ObjectId, ref: "Product" },
     name: {
-      required: true,
       type: String
     },
+    price: {
+      type: Number
+    },
     productId: {
-      required: true,
       type: String,
       unique: true
     },
     productType: {
       default: "Soap",
-      required: true,
       type: String
     },
     type: {
-      required: true,
       type: String
     },
     useTime: {
       type: String
+    },
+    variants: [{ type: Schema.Types.ObjectId, ref: "Product" }], // This is defined on the fly
+    weight: {
+      type: Number
     }
   },
   {
     timestamps: true
   }
 );
+
+ProductSchema.pre<TProducts>("save", function(next: NextFunction): void {
+  try {
+    if (this.productType === "stockable" && this.masterProductId === undefined) {
+      throw next({ err: "Master Product ID is missing" });
+    }
+    next();
+  } catch (error) {
+    return next(error);
+  }
+});

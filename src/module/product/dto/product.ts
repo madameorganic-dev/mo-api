@@ -1,6 +1,37 @@
-import { IsString, IsBoolean, IsOptional } from "class-validator";
+import { IsString, IsBoolean, IsOptional, IsIn, IsNumber } from "class-validator";
 import { ApiModelProperty } from "@nestjs/swagger";
 
+export class ProductVariant {
+  @IsNumber()
+  @ApiModelProperty()
+  public weight: number;
+
+  @IsNumber()
+  @ApiModelProperty()
+  public price: number;
+
+  @IsOptional()
+  @IsString()
+  @ApiModelProperty()
+  public createdBy: string;
+
+  @IsString()
+  @ApiModelProperty()
+  public masterProductId: string;
+
+  @IsOptional()
+  @IsString()
+  @IsIn(["stockable", "master"])
+  @ApiModelProperty()
+  public productType: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiModelProperty()
+  public productId: string;
+}
+
+// tslint:disable:max-classes-per-file
 export class Product {
   @IsString()
   @ApiModelProperty()
@@ -33,16 +64,20 @@ export class Product {
   @ApiModelProperty()
   public masterProductId: string;
 
+  @IsOptional()
   @IsString()
+  @IsIn(["stockable", "master"])
   @ApiModelProperty()
   public productType: string;
 
   @IsString()
   @ApiModelProperty()
+  @IsIn(["Cream", "Serum", "Soap", "Mask"])
   public type: string;
 
   @IsString()
   @ApiModelProperty()
+  @IsIn(["Day", "Night", "any"])
   public useTime: string;
 
 }

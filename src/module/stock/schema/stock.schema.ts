@@ -1,8 +1,7 @@
 import * as mongoose from "mongoose";
+import { Schema } from "mongoose";
 
-const Schema = mongoose.Schema;
-
-export const StockSchema = new mongoose.Schema(
+export const StockSchema: Schema = new mongoose.Schema(
   {
     createdBy: {
       required: true, // This shall refer to USER collection
