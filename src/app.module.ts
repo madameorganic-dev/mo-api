@@ -4,9 +4,10 @@ import { ArticleModule } from "./module/article/article.module";
 import { ProductModule } from "./module/product/product.module";
 import { StockModule } from "./module/stock/stock.module";
 import { UsersModule } from "./module/users/users.module";
+import { AuthModule } from "./module/auth/auth.module";
 
 @Module({
-  imports: [PostModule, ArticleModule, ProductModule, StockModule, UsersModule]
+  imports: [PostModule, ArticleModule, ProductModule, StockModule, UsersModule, AuthModule]
 })
 export class AppModule {
 }
