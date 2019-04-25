@@ -4,6 +4,8 @@ import { Service } from "./stock.service";
 import { BaseController } from "../Model/controller";
 import { PostDeleteValidation } from "./Validation/product.validation";
 import { ApiBearerAuth, ApiUseTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { generateRandomAlphaNumericString } from "../../utils";
+import { StockQuery } from "./dto/stock.query";
 
 @ApiUseTags("Stock")
 @Controller("stock")
@@ -35,7 +37,7 @@ export class CustomController extends BaseController {
         createdBy: create.createdBy,
         lotNo,
         productId,
-        serialnumber: create.productId + i,
+        serialnumber: "MADAME-" + generateRandomAlphaNumericString(6),
         stockQty: create.stockQty
       };
       documents.push(document);
@@ -47,7 +49,10 @@ export class CustomController extends BaseController {
   @Get()
   @ApiOperation({ title: "List Stock" })
   public async list(@Query() query: any): Promise<Stock[]> {
-    return super.list(query);
+    if (query.page) {
+      query.page = Number(query.page);
+    }
+    return this.postsService.list({}, query);
   }
 
   // tslint:disable-next-line

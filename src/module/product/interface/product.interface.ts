@@ -1,7 +1,13 @@
-import { Document } from "mongoose";
-
-export interface IProduct extends Document {
-  readonly name: string;
-  readonly productId: string;
-  readonly description: string;
+export interface IProduct {
+  name: string;
+  productId: string;
+  description: string;
+  createdBy: string;
+  isActive: boolean;
+  isDeleted: boolean;
+  masterProductId: string;
+  productType: string;
+  type: string;
+  useTime: string;
+  variant?: IProduct;
 }
