@@ -6,15 +6,16 @@ export const UserSchema = new mongoose.Schema(
   {
     email: {
       required: true,
-      type: String
-  },
+      type: String,
+      unique: true
+    },
     name: {
       required: true,
       type: String
     },
     password: {
-        required: true,
-        type: String
+      required: true,
+      type: String
     }
   },
   {

@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Param, Query, Delete, UsePipes } from "@nestjs/common";
+import { Controller, Get, Post, Body, Param, Query, Delete, UsePipes, UseGuards } from "@nestjs/common";
 import { Product, ProductVariant } from "./dto/product";
 import { Service } from "./product.service";
 import { BaseController } from "../Model/controller";
 import { PostDeleteValidation } from "./Validation/product.validation";
 import { ApiBearerAuth, ApiUseTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { AuthGuard } from "@nestjs/passport";
 
 @ApiUseTags("Products")
 @Controller("products")
@@ -45,6 +46,7 @@ export class CustomController extends BaseController {
 
   // tslint:disable-next-line
   @Get()
+  @UseGuards(AuthGuard("jwt"))
   @ApiOperation({ title: "List Products" })
   public async list(@Query() query: any): Promise<Product[]> {
     return super.list(query);

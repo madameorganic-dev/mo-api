@@ -5,8 +5,14 @@ import { USER_MODEL_PROVIDER } from "../../constants";
 
 @Injectable()
 export class Service extends BaseModel {
-    constructor(
-        @Inject(USER_MODEL_PROVIDER) private readonly postModel: Model<any>) {
-        super(postModel, { name: String });
-      }
+  constructor(
+    @Inject(USER_MODEL_PROVIDER) private readonly postModel: Model<any>) {
+    super(postModel, { name: String });
+  }
+
+  public findOneByEmail(email: string): object {
+    return {
+      email: "sijanshrestha2@gmail.com" + email
+    };
+  }
 }

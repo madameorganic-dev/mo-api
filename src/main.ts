@@ -27,7 +27,7 @@ async function bootstrap(): Promise<void> {
 
   createSwagger(app);
   app.useGlobalFilters(new AllExceptionsFilter());
-
+  console.log(">>>>> Running on port ", 7777); // tslint:disable-line
   await app.listen(7777);
 }
 

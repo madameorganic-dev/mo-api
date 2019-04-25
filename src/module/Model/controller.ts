@@ -1,4 +1,5 @@
-import { Body, Delete, Get, Param, Post, Query, Put } from "@nestjs/common";
+import { Body, Delete, Get, Param, Post, Query, Put, UseGuards } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
 
 export abstract class BaseController {
   private readonly controller: any;
@@ -13,6 +14,7 @@ export abstract class BaseController {
   }
 
   @Get()
+  @UseGuards(AuthGuard())
   public async list(@Query() query: any): Promise<any[]> {
     return this.controller.list(query);
   }
