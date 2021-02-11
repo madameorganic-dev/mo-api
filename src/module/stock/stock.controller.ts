@@ -1,18 +1,19 @@
 import { Controller, Get, Post, Body, Param, Query, Delete, UsePipes } from "@nestjs/common";
+import { ApiBearerAuth, ApiUseTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { Stock } from "./dto/stock";
 import { Service } from "./stock.service";
 import { BaseController } from "../Model/controller";
 import { PostDeleteValidation } from "./Validation/product.validation";
-import { ApiBearerAuth, ApiUseTags, ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { generateRandomAlphaNumericString } from "../../utils";
 import { StockQuery } from "./dto/stock.query";
+import { IStockVerificationResponse } from "./interface/stock.interface";
 
 @ApiUseTags("Stock")
 @Controller("stock")
 @ApiBearerAuth()
 export class CustomController extends BaseController {
-  constructor(private readonly postsService: Service) {
-    super(postsService);
+  constructor(private readonly stockService: Service) {
+    super(stockService);
   }
 
   // tslint:disable-next-line
@@ -27,7 +28,7 @@ export class CustomController extends BaseController {
   public create(@Body() create: Stock): any {
     // TODO:Create here the number of Stocks
     const { stockQty, lotNo, productId } = create;
-    create.createdBy = "Sijan-shrestha-auto-stock.controller"; // TODO: user
+    create.createdBy = "Test-User-auto-stock.controller"; // TODO: user
 
     let i: number = 1;
     const documents: Stock[] = [];
@@ -37,7 +38,7 @@ export class CustomController extends BaseController {
         createdBy: create.createdBy,
         lotNo,
         productId,
-        serialnumber: "MADAME-" + generateRandomAlphaNumericString(6),
+        serialNumber: "MADAME-" + generateRandomAlphaNumericString(6),
         stockQty: create.stockQty
       };
       documents.push(document);
@@ -52,7 +53,7 @@ export class CustomController extends BaseController {
     if (query.page) {
       query.page = Number(query.page);
     }
-    return this.postsService.list({}, query);
+    return this.stockService.list({}, query);
   }
 
   // tslint:disable-next-line
@@ -60,6 +61,13 @@ export class CustomController extends BaseController {
   @ApiOperation({ title: "Get One Stock" })
   public async get(@Param() params: any): Promise<Stock> {
     return super.get(params);
+  }
+
+  // FIXME: Return promise of another response
+  @Get("verify/:id")
+  @ApiOperation({ title: "Verify One Stock" })
+  public async verify(@Param("id") id: string): Promise<IStockVerificationResponse> {
+    return this.stockService.verify(id);
   }
 
   // tslint:disable-next-line

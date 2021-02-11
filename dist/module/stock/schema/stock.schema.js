@@ -10,7 +10,7 @@ exports.StockSchema = new mongoose.Schema({
     productId: [
         { type: Schema.Types.ObjectId, ref: "Product" }
     ],
-    serialnumber: {
+    serialNumber: {
         required: "true",
         type: "string",
         unique: "true"

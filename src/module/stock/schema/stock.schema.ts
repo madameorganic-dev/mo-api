@@ -8,18 +8,29 @@ export const StockSchema: Schema = new mongoose.Schema(
       type: String
     },
     lotNo: {
-      type: "string"
+      type: String
     },
     productId: {
       ref: "Product",
       type: Schema.Types.ObjectId
     },
-    serialnumber: {
+    serialNumber: {
       required: "true",
-      type: "string",
+      type: String,
       unique: "true"
+    },
+    verificationCount: {
+      default: 0,
+      required: "true",
+      type: Number
+    },
+    verifiedBy: {
+      required: "true",
+      type: String,
+      unique: "true"
+      // ref: "User",
+      // type: Schema.Types.ObjectId
     }
-
   },
   {
     timestamps: true

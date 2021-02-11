@@ -5,7 +5,7 @@ export class Stock {
   @IsOptional()
   @IsString()
   @ApiModelProperty()
-  public serialnumber: string;
+  public serialNumber: string;
 
   @IsString()
   @ApiModelProperty()
