@@ -5,10 +5,11 @@ import { ProductModule } from "./module/product/product.module";
 import { StockModule } from "./module/stock/stock.module";
 import { UsersModule } from "./module/users/users.module";
 import { AuthModule } from "./auth/auth.module";
+import { VerificationHistoryModule } from "./module/verificationHistory/verificationHistory.module";
 
 @Module(
   {
-    imports: [AuthModule, PostModule, ArticleModule, ProductModule, StockModule, UsersModule]
+    imports: [AuthModule, PostModule, ArticleModule, ProductModule, StockModule, UsersModule, VerificationHistoryModule]
   })
 export class AppModule {
 }

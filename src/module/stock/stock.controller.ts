@@ -5,8 +5,7 @@ import { Service } from "./stock.service";
 import { BaseController } from "../Model/controller";
 import { PostDeleteValidation } from "./Validation/product.validation";
 import { generateRandomAlphaNumericString } from "../../utils";
-import { StockQuery } from "./dto/stock.query";
-import { IStockVerificationResponse } from "./interface/stock.interface";
+// import { StockQuery } from "./dto/stock.query";
 
 @ApiUseTags("Stock")
 @Controller("stock")
@@ -61,13 +60,6 @@ export class CustomController extends BaseController {
   @ApiOperation({ title: "Get One Stock" })
   public async get(@Param() params: any): Promise<Stock> {
     return super.get(params);
-  }
-
-  // FIXME: Return promise of another response
-  @Get("verify/:id")
-  @ApiOperation({ title: "Verify One Stock" })
-  public async verify(@Param("id") id: string): Promise<IStockVerificationResponse> {
-    return this.stockService.verify(id);
   }
 
   // tslint:disable-next-line
